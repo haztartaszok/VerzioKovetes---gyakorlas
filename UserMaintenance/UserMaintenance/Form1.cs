@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserMaintenance.Properties;
 
 namespace UserMaintenance
 {
@@ -15,6 +16,10 @@ namespace UserMaintenance
         public Form1()
         {
             InitializeComponent();
+            lblLastName.Text = Resources.LastName; // label1
+            lblFirstName.Text = Resources.FirstName; // label2
+            btnAdd.Text = Resources.Add; // button1
         }
+
     }
 }
