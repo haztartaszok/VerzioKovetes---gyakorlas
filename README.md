@@ -1,2 +1,2 @@
 # VerzioKovetes
-Fejlesztések verziókövetésére létrehozott repository
+Gyakorlásra létrehozott repository
