@@ -22,6 +22,7 @@ namespace UserMaintenance
             lblFullName.Text = Resources.FullName; // label1
             btnAdd.Text = Resources.Add; // button1
             btnWrite.Text = Resources.Write; // button2
+            btnDelete.Text = Resources.Delete;
 
             // attach write handler
             this.btnWrite.Click += this.btnWrite_Click;
@@ -30,6 +31,9 @@ namespace UserMaintenance
             listUsers.DataSource = users;
             listUsers.ValueMember = "ID";
             listUsers.DisplayMember = "FullName";
+
+            // attach delete handler
+            this.btnDelete.Click += this.btnDelete_Click;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -39,6 +43,14 @@ namespace UserMaintenance
                 FullName = txtFullName.Text
             };
             users.Add(u);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var selected = listUsers.SelectedItem as User;
+            if (selected == null) return;
+
+            users.Remove(selected);
         }
 
         private void btnWrite_Click(object sender, EventArgs e)
@@ -56,7 +68,7 @@ namespace UserMaintenance
                     {
                         // header (tab-separated)
                         sw.WriteLine("ID\tFullName");
-                        foreach (var u in users)
+                        foreach (var u in users) // lista elemenként megnézem, hogy van-e benne tab, idézőjel, új sor, stb., és ha igen, akkor megfelelően escape-elem
                         {
                             string Escape(string v)
                             {
